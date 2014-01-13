@@ -1,0 +1,27 @@
+{
+  "name": "btc-transactions",
+  "version": "0.0.1",
+  "description": "Create, parse, serialize Bitcoin transactions.",
+  "keywords": [
+    "crytography",
+    "crypto",
+    "bitcoin",
+    "script",
+    "currency",
+    "transaction"
+  ],
+  "devDependencies": {
+    "mocha": "1.*",
+    "terst": "0.0.1"
+  },
+  "repository": {
+    "url": "http://github.com/cryptocoinjs/btc-transcaction",
+    "type": "git"
+  },
+  "main": "./lib/transaction.js",
+  "dependencies": {
+    "btc-opcode": "0.0.1",
+    "convert-hex": "~0.1.0",
+    "btc-address": "~0.2.0"
+  }
+}
