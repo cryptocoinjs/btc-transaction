@@ -22,6 +22,8 @@
   "dependencies": {
     "btc-opcode": "0.0.1",
     "convert-hex": "~0.1.0",
-    "btc-address": "~0.2.0"
+    "btc-address": "~0.2.0",
+    "bigi": "~0.2.0",
+    "btc-script": "0.0.1"
   }
 }
