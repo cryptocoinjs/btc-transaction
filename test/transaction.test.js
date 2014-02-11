@@ -37,6 +37,16 @@ describe('Transaction ', function() {
     })
   })
 
+  describe(' - Transaction.getTotalOutValue()', function() {
+    it(' > should return the correct value (from LE byte array)', function() {
+      var test = new Transaction()
+      test.addOutput('mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L', '10000000000')
+      test.addOutput('mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L', '20000000000')
+
+      T(test.getTotalOutValue().compareTo(BigInteger('30000000000', 10)) === 0)
+    })
+  })
+
 })
 
 describe('TransactionOut', function() {
