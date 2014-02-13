@@ -21,13 +21,12 @@
   "main": "./lib/transaction.js",
   "dependencies": {
     "btc-opcode": "0.0.1",
-    "convert-hex": "~0.1.0",
     "btc-address": "~0.4.0",
     "bigi": "~0.2.0",
-    "btc-script": "~0.1.0",
-    "sha256": "~0.1.1",
+    "btc-script": "~0.1.1",
     "terst": "0.0.1",
     "crypto-binary": "~0.1.0",
-    "binstring": "~0.2.0"
+    "binstring": "~0.2.0",
+    "crypto-hashing": "~0.1.0"
   }
 }
