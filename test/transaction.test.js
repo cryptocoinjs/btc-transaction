@@ -1,4 +1,5 @@
 var Transaction = require('../').Transaction
+var TransactionIn = require('../').TransactionIn
 var TransactionOut = require('../').TransactionOut
 var BigInteger = require('bigi')
 var convBin = require('binstring')
@@ -74,7 +75,37 @@ describe('Transaction ', function() {
       T(test.getTotalOutValue().compareTo(BigInteger('30000000000', 10)) === 0)
     })
   })
+})
 
+describe('TransactionIn', function() {
+  describe(' - new TransactionIn()', function() {
+    it(' > Should be able to generate a coinbase TranscationIn', function() {
+      // Genesis Coinbase Transaction
+      // https://helloblock.io/mainnet/transactions/0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098
+
+      // scenario 1:
+      // there is outpoint but there is no hash
+      var coinbaseInput1 = new TransactionIn({
+        outpoint: {
+          hash: null,
+          index: null
+        },
+        script: '04ffff001d0104'
+      })
+
+      EQ(coinbaseInput1.outpoint.hash, '0000000000000000000000000000000000000000000000000000000000000000')
+      EQ(coinbaseInput1.outpoint.index, -1)
+
+      // scenario 2:
+      // there no outpoint
+      var coinbaseInput2 = new TransactionIn({
+        script: '04ffff001d0104'
+      })
+
+      EQ(coinbaseInput2.outpoint.hash, '0000000000000000000000000000000000000000000000000000000000000000')
+      EQ(coinbaseInput2.outpoint.index, -1)
+    })
+  })
 })
 
 describe('TransactionOut', function() {
