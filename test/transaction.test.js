@@ -68,6 +68,7 @@ describe('Transaction ', function() {
 
   describe(' - Transaction.getTotalOutValue()', function() {
     it(' > should return the correct value (from LE byte array)', function() {
+      Transaction.defaultNetwork = 'testnet'
       var test = new Transaction()
       test.addOutput('mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L', '10000000000')
       test.addOutput('mvaRDyLUeF4CP7Lu9umbU3FxehyC5nUz3L', '20000000000')
@@ -80,6 +81,7 @@ describe('Transaction ', function() {
 describe('TransactionIn', function() {
   describe(' - new TransactionIn()', function() {
     it(' > Should be able to generate a coinbase TranscationIn', function() {
+      Transaction.defaultNetwork = 'mainnet'
       // Genesis Coinbase Transaction
       // https://helloblock.io/mainnet/transactions/0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098
 
@@ -111,6 +113,7 @@ describe('TransactionIn', function() {
 describe('TransactionOut', function() {
   describe(' - new TransactionOut()', function() {
     it(' > Should generate the consistent value bytes order (should be unsigned byte array padded with zero and reversed)', function() {
+      Transaction.defaultNetwork = 'testnet'
       // https://test.helloblock.io/v1/transactions/c68d98aaff4630ec37ca360b61a690796183e8a1b14cf123c00f0913eed6107f
       // first output
       // {
