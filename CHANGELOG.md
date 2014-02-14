@@ -1,3 +1,7 @@
+0.1.1 / 2014-02-14
+------------------
+* Bugfix - serialize() used a removed dependency
+
 0.1.0 / 2014-02-13
 ------------------
 * if there is no `outpoint` default to coinbase `transactionIn`, 32 zero bytes, i.e. `0` as tx hash, `-1` as txIndex
