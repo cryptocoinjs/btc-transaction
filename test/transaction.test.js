@@ -25,6 +25,12 @@ describe('Transaction ', function() {
         EQ(test.ins.length, 1)
         EQ(test.outs.length, 1)
       }
+
+      // should be able to reserialize this into the original hex
+      var hex = convBin(test.serialize(), { in : 'bytes',
+        out: 'hex'
+      })
+      EQ(rawHex, hex)
     })
 
     it(' > should return false when encountering an incorrect buffer', function() {
