@@ -1,3 +1,8 @@
+0.1.2 / 2014-02-18
+-----------------
+* Bugfix - serialize v2 coinbase script
+* Bugfix - parsing transaction with verison 0 
+
 0.1.1 / 2014-02-14
 ------------------
 * Bugfix - serialize() used a removed dependency
