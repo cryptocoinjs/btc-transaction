@@ -70,6 +70,16 @@ describe('Transaction ', function() {
         EQ(test[1].outs.length, 2)
       }
     })
+
+    it(' > supports BIP34 coinbase transactions', function() {
+      var coinbaseHex = '01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0d03d891000450a8eb0b4ed20100ffffffff0100f2052a010000001976a9148c91773ffc9541c8f871ba62d3e7df2c54eddd7488ac00000000'
+      var buf = convBin(coinbaseHex, { in : 'hex',
+        out: 'buffer'
+      })
+      var v2coinbaseTx = Transaction.deserialize(buf)
+      T(v2coinbaseTx)
+      EQ(v2coinbaseTx.ins[0].script.getBlockHeight(), 37336)
+    })
   })
 
   describe(' - Transaction.getTotalOutValue()', function() {
