@@ -70,6 +70,30 @@ describe('Transaction ', function() {
         EQ(test[1].outs.length, 2)
       }
     })
+
+    it(' > supports BIP34 coinbase transactions', function() {
+      var coinbaseHex = '01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0d03d891000450a8eb0b4ed20100ffffffff0100f2052a010000001976a9148c91773ffc9541c8f871ba62d3e7df2c54eddd7488ac00000000'
+      var buf = convBin(coinbaseHex, { in : 'hex',
+        out: 'buffer'
+      })
+      var v2coinbaseTx = Transaction.deserialize(buf)
+      T(v2coinbaseTx)
+      EQ(v2coinbaseTx.ins[0].script.getBlockHeight(), 37336)
+    })
+
+    it(' > parse transaction with version of 0', function() {
+      // https://helloblock.io/testnet/transactions/f1ebaf4604158a8a385cb55d1c0ca5efde98ab2d6f92bc667a02485f258c064e
+      var hex = '000000000100eb1d909b9f297fa7f72dc7d7298f19d5454c1cae28d7463f150a60aa2814d9010000006a47304402207413f23d980d48ba4855126ab8fc896fdeeb7752cd9c76a2054a696a5a6137cc02201a674d6cfd32668b9ac4c50ca853975a085f724cb92e95a189610e686e7f3204012103ac81c3203de55b31478da413d9bb68b99dc8e33176f9f48e5efcc0900bb41b4affffffff024e61bc00000000001976a914cdf39308e3b7ad69de09e1e4d99e036905a4289688aca2583905000000001976a914a2e4f051244a24e469d28f076fec1db4f79512b788ac00000000'
+      var buf = convBin(hex, { in : 'hex',
+        out: 'buffer'
+      })
+      var test = Transaction.deserialize(buf, 1)
+      debugger
+      EQ(convBin(test.serialize(), { in : 'bytes',
+        out: 'hex'
+      }), hex)
+    })
+
   })
 
   describe(' - Transaction.getTotalOutValue()', function() {
