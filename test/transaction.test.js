@@ -3,6 +3,7 @@ var TransactionIn = require('../').TransactionIn
 var TransactionOut = require('../').TransactionOut
 var BigInteger = require('bigi')
 var convBin = require('binstring')
+var fs = require('fs')
 
 require('terst')
 
@@ -88,10 +89,20 @@ describe('Transaction ', function() {
         out: 'buffer'
       })
       var test = Transaction.deserialize(buf, 1)
-      debugger
       EQ(convBin(test.serialize(), { in : 'bytes',
         out: 'hex'
       }), hex)
+    })
+
+    it(' > caches the original bytes so that we dont need to serialize again to getHash() or getSize() ', function() {
+      var fileBuf = fs.readFileSync('./test/fixtures/95ea61f319ed0d2b28e94cb0164396b4024bc6ad624fcb492c5c87a088592e81.bin')
+
+      var tx = Transaction.deserialize(fileBuf)
+      // note: serializing a large transaction (1000+ inputs) such as this can take up to 2 minutes. So we have to cache the original bytes when we deserialize it so that getHash() will be fast
+      EQ(convBin(tx.getHash(), { in : 'bytes',
+        out: 'hex'
+      }), '95ea61f319ed0d2b28e94cb0164396b4024bc6ad624fcb492c5c87a088592e81')
+      EQ(tx.getSize(), 389406)
     })
 
   })
