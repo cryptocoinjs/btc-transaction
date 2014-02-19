@@ -1,3 +1,7 @@
+0.1.3 / 2014-02-19
+------------------
+* When deserializing a transaction, cache the original bytes to speed up action such as getHash() and getSize(); This is because serialize() can take a very long time (sometimes in minutes) to serialize transactions with thousands of inputs
+
 0.1.2 / 2014-02-18
 -----------------
 * Bugfix - serialize v2 coinbase script
