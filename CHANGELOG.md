@@ -1,4 +1,4 @@
-0.1.4 / 2014-02-27
+0.1.5 / 2014-02-27
 ------------------
 * interpret coinbase prevout index as -1
 
