@@ -80,6 +80,7 @@ describe('Transaction ', function() {
       var v2coinbaseTx = Transaction.deserialize(buf)
       T(v2coinbaseTx)
       EQ(v2coinbaseTx.ins[0].script.getBlockHeight(), 37336)
+      EQ(v2coinbaseTx.ins[0].outpoint.index, -1)
     })
 
     it(' > parse transaction with version of 0', function() {
