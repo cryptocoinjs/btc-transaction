@@ -1,6 +1,6 @@
 {
   "name": "btc-transaction",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Create, parse, serialize Bitcoin transactions.",
   "keywords": [
     "crytography",
@@ -23,7 +23,7 @@
     "btc-opcode": "0.0.1",
     "btc-address": "~0.4.0",
     "bigi": "~0.2.0",
-    "btc-script": "~0.1.9",
+    "btc-script": "~0.1.12",
     "crypto-binary": "~0.1.0",
     "binstring": "~0.2.0",
     "crypto-hashing": "~0.1.0"
